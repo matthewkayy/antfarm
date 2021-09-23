@@ -19,15 +19,16 @@ export declare class WebhookNest extends Nest {
      */
     constructor(e: Environment, path: string | string[], httpMethod: string, handleRequest?: any);
     /**
-     * Get the holdResponse flag.
-     * @returns {boolean}
-     */
-    /**
      * Set hold response flag. This allows you to run tunnel logic and send the response after completion.
      * You must call _releaseResponse_ later if you use this.
      * @param holdResponse
      */
-    holdResponse: boolean;
+    set holdResponse(holdResponse: boolean);
+    /**
+     * Get the holdResponse flag.
+     * @returns {boolean}
+     */
+    get holdResponse(): boolean;
     /**
      * Releases the webhook response when tunnel run logic is complete.
      * @param job {WebhookJob}      The webhook job that triggered the webhook nest.
@@ -50,35 +51,38 @@ export declare class WebhookNest extends Nest {
      * Get the custom handleRequest function.
      * @returns {any}
      */
+    get customHandleRequest(): any;
     /**
      * Set the custom handlerRequest function.
      * @param handleRequest
      */
-    customHandleRequest: any;
-    /**
-     * Get the _path.
-     * @returns {string}
-     */
+    set customHandleRequest(handleRequest: any);
     /**
      * Set the _path as a string or a string array. All parts are URI encoded.
      * Create directory structures with an array: ["one", "two"] results in "/one/two".
      * @param path
      */
-    path: any;
+    set path(path: any);
+    /**
+     * Get the _path.
+     * @returns {string}
+     */
+    get path(): any;
     /**
      * Get the HTTP method.
      * @returns {string}
      */
+    get httpMethod(): string;
     /**
      * Set the HTTP method.
      * @param httpMethod
      */
-    httpMethod: string;
+    set httpMethod(httpMethod: string);
     /**
      * Get the _name.
      * @returns {string}
      */
-    readonly name: string;
+    get name(): string;
     /**
      * On load, do nothing.
      */
@@ -96,5 +100,5 @@ export declare class WebhookNest extends Nest {
      * Get the interface manager. Used to manage interface instances for session handling.
      * @returns {InterfaceManager}
      */
-    readonly interfaceManager: InterfaceManager;
+    get interfaceManager(): InterfaceManager;
 }

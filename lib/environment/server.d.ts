@@ -1,4 +1,3 @@
-/// <reference types="express" />
 import { Environment } from "./environment";
 import { WebhookNest } from "../nest/webhookNest";
 import { WebhookJob } from "../job/webhookJob";

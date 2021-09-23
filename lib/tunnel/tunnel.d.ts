@@ -24,12 +24,14 @@ export declare class Tunnel {
     };
     constructor(e: Environment, tunnelName: string);
     toString(): string;
-    name: string;
-    readonly nests: Nest[];
-    readonly runList: any[];
-    readonly runSyncList: any[];
-    runFail: any;
-    readonly id: string;
+    get name(): string;
+    set name(name: string);
+    get nests(): Nest[];
+    get runList(): any[];
+    get runSyncList(): any[];
+    get runFail(): any;
+    set runFail(callback: any);
+    get id(): string;
     /**
      * Instructs the tunnel to watch a nest for new jobs.
      * @param nest

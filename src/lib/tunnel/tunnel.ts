@@ -2,8 +2,8 @@ import { FolderNest } from "../nest/folderNest";
 import { Nest } from "../nest/nest";
 import { Job } from "../job/job";
 import { Environment } from "../environment/environment";
-import {WebhookNest} from "../nest/webhookNest";
-import {FtpNest} from "../nest/ftpNest";
+import { WebhookNest } from "../nest/webhookNest";
+import { FtpNest } from "../nest/ftpNest";
 
 const   async = require("async"),
         mm = require("micromatch"),

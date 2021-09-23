@@ -1,20 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "declaration": true
+    "declaration": true,
+    "outDir": "./lib",
+    "skipLibCheck": true
   },
   "include": [
-    "src/**/*"
+    "src/docs/**/*",
+    "src/lib/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "lib",
-    "example",
-    "src/docs/**/*"
+    "node_modules"
   ]
 }

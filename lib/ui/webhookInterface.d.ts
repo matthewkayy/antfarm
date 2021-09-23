@@ -5,8 +5,6 @@ import { FieldOptions } from "./field";
 import { Step } from "./step";
 import { InterfaceMetadata } from "./interfaceMetadata";
 import { InterfaceProperty } from "./InterfaceProperty";
-import { FileJob } from "../job/fileJob";
-import { FolderJob } from "../job/folderJob";
 /**
  * A webhook interface instance, tied to a particular session.
  * Within interface steps, you can use these methods directly to alter the schema being returned to the user interface.
@@ -41,25 +39,26 @@ export declare class WebhookInterface {
      */
     constructor(e: Environment, nest: WebhookNest);
     protected initMetadata(): void;
+    get metadata(): InterfaceMetadata;
     /**
      * Sets a cloned instance of metadata.
      * @param metadata
      */
-    metadata: InterfaceMetadata;
-    description: string;
-    tooltip: string;
+    set metadata(metadata: InterfaceMetadata);
+    set description(description: string);
+    set tooltip(tooltip: string);
     addInterfaceProperty(property: InterfaceProperty): void;
-    interfaceProperties: InterfaceProperty[];
+    set interfaceProperties(properties: InterfaceProperty[]);
     /**
      * Return the session id. Used to match to interface instanced within the manager.
      * @returns {string}
      */
-    readonly sessionId: string;
+    get sessionId(): string;
     /**
      * Get the nest
      * @returns {WebhookNest}
      */
-    readonly nest: WebhookNest;
+    get nest(): WebhookNest;
     /**
      * Adds an interface field to the interface.
      * @param {FieldOptions} field
@@ -87,14 +86,15 @@ export declare class WebhookInterface {
      */
     getField(fieldId: string): any;
     /**
-     * Get an array of all of the fields.
-     * @returns {FieldOptions[]}
-     */
-    /**
      * Overwrites fields with a clone.
      * @param fields
      */
-    fields: FieldOptions[];
+    set fields(fields: FieldOptions[]);
+    /**
+     * Get an array of all of the fields.
+     * @returns {FieldOptions[]}
+     */
+    get fields(): FieldOptions[];
     /**
      * Returns the interface for transport.
      * @returns {{fields: Array}}
@@ -110,12 +110,13 @@ export declare class WebhookInterface {
      * Returns checked jobs.
      * @returns {(FileJob|FolderJob)[]}
      */
-    getJobs(): (FileJob | FolderJob)[];
+    getJobs(): (import("../job/fileJob").FileJob | import("../job/folderJob").FolderJob)[];
     /**
      * Sets the checkpoint nest.
      * @param nest
      */
-    checkpointNest: FolderNest;
+    set checkpointNest(nest: FolderNest);
+    get checkpointNest(): FolderNest;
     /**
      * Adds a user interface step
      * @param stepName
@@ -136,10 +137,11 @@ export declare class WebhookInterface {
      * Get an array of instance steps.
      * @returns {Step[]}
      */
+    get steps(): any;
+    getStepsTransport(): any[];
     /**
      * Overwrite the instant steps.
      * @param steps
      */
-    steps: any;
-    getStepsTransport(): any[];
+    set steps(steps: any);
 }

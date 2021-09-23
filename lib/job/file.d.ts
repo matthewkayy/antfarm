@@ -21,47 +21,49 @@ export declare class File {
      * Get the _basename.
      * @returns {string}
      */
+    get name(): string;
     /**
      * Set a new file _name.
      * @param filename
      */
-    name: string;
+    set name(filename: string);
     /**
      * Get the file _name of the job without the file extension.
      * @returns {string}
      */
-    readonly nameProper: any;
+    get nameProper(): any;
     /**
      * Get the top level directory _name.
      * @returns {string}
      */
-    readonly dirname: string;
+    get dirname(): string;
     /**
      * Get the complete directory _path.
      * @returns {string}
      */
+    get path(): string;
     /**
      * Set the complete directory _path.
      * @param path
      */
-    path: string;
+    set path(path: string);
     /**
      * Get the content-type of the file.
      * @returns {string}
      */
-    readonly contentType: string;
+    get contentType(): string;
     /**
      * Get the file extension.
      * @returns {string}
      */
-    readonly extension: string;
+    get extension(): string;
     /**
      * Get the _basename.
      * @returns {string}
      */
-    readonly basename: string;
-    readonly sizeBytes: number;
-    readonly size: any;
+    get basename(): string;
+    get sizeBytes(): number;
+    get size(): any;
     /**
      * Renames the local job file to the current _name.
      */

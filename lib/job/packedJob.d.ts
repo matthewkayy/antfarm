@@ -5,7 +5,8 @@ export declare class PackedJob extends FileJob {
     protected e: Environment;
     protected _job: Job;
     constructor(e: Environment, job: Job);
-    protected job: Job;
+    protected get job(): Job;
+    protected set job(job: Job);
     /**
      * Makes job ticket and returns the _path to the temporary file.
      * @param job

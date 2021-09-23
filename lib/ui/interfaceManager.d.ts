@@ -36,28 +36,30 @@ export declare class InterfaceManager {
      */
     constructor(e: Environment, webhookNest: WebhookNest, handleRequest?: any);
     protected initMetadata(): void;
-    metadata: InterfaceMetadata;
-    description: string;
-    tooltip: string;
+    get metadata(): InterfaceMetadata;
+    set metadata(metadata: InterfaceMetadata);
+    set description(description: string);
+    set tooltip(tooltip: string);
     addInterfaceProperty(property: InterfaceProperty): void;
-    interfaceProperties: InterfaceProperty[];
-    readonly interfaceInstances: WebhookInterface[];
-    checkpointNest: FolderNest;
+    set interfaceProperties(properties: InterfaceProperty[]);
+    get interfaceInstances(): WebhookInterface[];
+    get checkpointNest(): FolderNest;
+    set checkpointNest(nest: FolderNest);
     /**
      * Get the custom handleRequest function.
      * @returns {any}
      */
-    readonly customHandleRequest: any;
+    get customHandleRequest(): any;
     /**
      * Get the nest
      * @returns {WebhookNest}
      */
-    readonly nest: WebhookNest;
+    get nest(): WebhookNest;
     /**
      * Get the nest _path.
      * @returns {string}
      */
-    readonly path: any;
+    get path(): any;
     /**
      * Adds an interface field to the interface.
      * @param {FieldOptions} field
@@ -67,7 +69,7 @@ export declare class InterfaceManager {
      * Gets an array of interface fields.
      * @returns {FieldOptions[]}
      */
-    readonly fields: FieldOptions[];
+    get fields(): FieldOptions[];
     /**
      * Adds a user interface step.
      * @param stepName
@@ -93,7 +95,7 @@ export declare class InterfaceManager {
      * Get an array of user interface steps.
      * @returns {Step[]}
      */
-    readonly steps: Step[];
+    get steps(): Step[];
     protected addInterfaceInstance(wi: WebhookInterface): void;
     protected removeInterfaceInstance(wi: WebhookInterface): void;
     /**

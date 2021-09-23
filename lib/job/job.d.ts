@@ -21,7 +21,7 @@ export declare abstract class Job {
      * @param name
      */
     constructor(e: Environment, name: string);
-    readonly type: string;
+    get type(): string;
     /**
      * Class _name for logging.
      * @returns {string}
@@ -31,17 +31,18 @@ export declare abstract class Job {
      * Check if job is locally available.
      * @returns {boolean}
      */
-    readonly isLocallyAvailable: boolean;
+    get isLocallyAvailable(): boolean;
     /**
      * Set if the job is locally available.
      * @param available
      */
-    locallyAvailable: boolean;
+    set locallyAvailable(available: boolean);
     /**
      * Get the life cycle object.
      * @returns {LifeEvent[]}
      */
-    lifeCycle: LifeEvent[];
+    get lifeCycle(): LifeEvent[];
+    set lifeCycle(events: LifeEvent[]);
     /**
      * Create a new life event.
      * @param verb
@@ -50,42 +51,45 @@ export declare abstract class Job {
      */
     protected createLifeEvent(verb: string, start: string, finish: string): void;
     /**
-     * Get the _name.
-     * @returns {string}
-     */
-    /**
      * Set a new _name.
      * @param name
      */
-    name: string;
+    set name(name: string);
+    /**
+     * Get the _name.
+     * @returns {string}
+     */
+    get name(): string;
     /**
      * Get the ID.
      * @returns {string}
      */
-    readonly id: string;
+    get id(): string;
     /**
      * Get the _name proper.
      * @returns {string}
      */
-    readonly nameProper: string;
-    /**
-     * Get the nest.
-     * @returns {Nest}
-     */
+    get nameProper(): string;
     /**
      * Set the nest.
      * @param nest
      */
-    nest: Nest;
+    set nest(nest: Nest);
     /**
-     * Get the tunnel.
-     * @returns {Tunnel}
+     * Get the nest.
+     * @returns {Nest}
      */
+    get nest(): Nest;
     /**
      * Set the tunnel.
      * @param tunnel
      */
-    tunnel: Tunnel;
+    set tunnel(tunnel: Tunnel);
+    /**
+     * Get the tunnel.
+     * @returns {Tunnel}
+     */
+    get tunnel(): Tunnel;
     /**
      * Function to call to fail a job while in a tunnel.
      * @param reason
@@ -157,14 +161,14 @@ export declare abstract class Job {
      * @param value
      */
     setPropertyValue(key: string, value: any): void;
-    propertyValues: Object;
+    set propertyValues(properties: Object);
     /**
      * Get the entire job property object.
      * @param key
      * @returns {JobProperty}
      */
     getProperty(key: string): JobProperty;
-    readonly properties: any;
+    get properties(): any;
     /**
      * Get the value of a property if it has been previously set.
      * @param key
@@ -216,11 +220,12 @@ export declare abstract class Job {
      * @returns {string}
      */
     getJSON(): any;
-    path: string;
+    get path(): string;
     isFile(): any;
     isFolder(): any;
-    readonly files: any;
+    get files(): any;
     getFile(index: any): any;
+    set path(path: string);
     rename(name: string): any;
     /**
      * Add a message to the log with this job as the actor.
@@ -229,6 +234,6 @@ export declare abstract class Job {
      * @returns {undefined}
      */
     log(level: number, message: string): void;
-    readonly size: any;
-    readonly sizeBytes: any;
+    get size(): any;
+    get sizeBytes(): any;
 }

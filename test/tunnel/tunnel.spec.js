@@ -1,5 +1,5 @@
 var should = require("chai").should();
-var Antfarm = require("./../../lib/antfarm");
+var Antfarm = require("./../../lib/antfarm").default;
 var tmp = require('tmp');
 var fs = require("fs");
 var path = require('path');

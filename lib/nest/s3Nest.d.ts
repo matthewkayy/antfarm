@@ -60,7 +60,7 @@ export declare class S3Nest extends Nest {
      * @param part
      * @returns {number}
      */
-    private calculateRemaining(total, loaded, part?);
+    private calculateRemaining;
     /**
      * Upload file to S3
      * @param job {FileJob}     FileJob to be uploaded.

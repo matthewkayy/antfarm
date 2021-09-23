@@ -1,7 +1,3 @@
-import tunnel = require("./tunnel/tunnel");
-import nest = require("./nest/nest");
-import folderNest = require("./nest/folderNest");
-import job = require("./job/job");
 import {Tunnel} from "./tunnel/tunnel";
 import {FtpNest} from "./nest/ftpNest";
 import {FolderNest} from "./nest/folderNest";
@@ -14,7 +10,7 @@ import {S3Nest} from "./nest/s3Nest";
 /**
  * Expose `Antfarm`.
  */
-export class Antfarm {
+export default class Antfarm {
 
     protected e: Environment;
 
@@ -181,5 +177,3 @@ export class Antfarm {
         af.e.log(type, message, actor, instances);
     }
 }
-
-module.exports = Antfarm;

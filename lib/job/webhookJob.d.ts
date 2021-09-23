@@ -15,24 +15,25 @@ export declare class WebhookJob extends Job {
      */
     constructor(e: Environment, request: any, response: any);
     /**
-     * Get if the response to the webhook was already sent or not.
-     * @returns {boolean}
-     */
-    /**
      * Set if the response to the webhook was already sent or not.
      * @param sent
      */
-    responseSent: boolean;
+    set responseSent(sent: boolean);
+    /**
+     * Get if the response to the webhook was already sent or not.
+     * @returns {boolean}
+     */
+    get responseSent(): boolean;
     /**
      * Get the HTTP response object.
      * @returns {ClientResponse}
      */
-    readonly response: any;
+    get response(): any;
     /**
      * Get the HTTP request object.
      * @returns {ClientRequest}
      */
-    readonly request: any;
+    get request(): any;
     /**
      * Return a specific URL parameter.
      * #### Example

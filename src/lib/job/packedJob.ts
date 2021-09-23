@@ -167,7 +167,6 @@ export class PackedJob extends FileJob {
                 zip.folder("_ticket").forEach((relativePath, file) => {
                     zip.file(`_ticket${path.sep}${relativePath}`).async("string")
                     .then((content) => {
-
                         // Restore old job ticket
                         job = pj.restoreJobTicket(content);
 
@@ -175,7 +174,6 @@ export class PackedJob extends FileJob {
                         pj.restoreFiles(job, zip, (unpackedJob) => {
                             done(unpackedJob);
                         });
-
                     });
                 });
             });

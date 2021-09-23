@@ -14,50 +14,52 @@ export declare class FileJob extends Job {
      * Get the file object.
      * @returns {File}
      */
-    readonly file: File;
+    get file(): File;
     /**
      * Get the file _name.
      * @returns {string}
      */
-    /**
-     * Set a new file _name.
-     * @param filename
-     */
-    name: string;
+    get name(): string;
     /**
      * Get the file _name proper.
      * @returns {string}
      */
-    readonly nameProper: any;
+    get nameProper(): any;
     /**
      * Get the file directory _name.
      * @returns {string}
      */
-    readonly dirname: string;
+    get dirname(): string;
     /**
      * Get the file _path.
      * @returns {string}
      */
+    get path(): string;
     /**
      * Set a new file _path.
      * @param path
      */
-    path: string;
+    set path(path: string);
+    /**
+     * Set a new file _name.
+     * @param filename
+     */
+    set name(filename: string);
     /**
      * Get the file content type.
      * @returns {string}
      */
-    readonly contentType: string;
+    get contentType(): string;
     /**
      * Get the file extension.
      * @returns {string}
      */
-    readonly extension: string;
+    get extension(): string;
     /**
      * Get the file _basename.
      * @returns {string}
      */
-    readonly basename: string;
+    get basename(): string;
     /**
      * Check if job is a folder.
      * @returns {boolean}
@@ -96,6 +98,6 @@ export declare class FileJob extends Job {
      * Deletes the local file.
      */
     remove(): boolean;
-    readonly size: any;
-    readonly sizeBytes: number;
+    get size(): any;
+    get sizeBytes(): number;
 }

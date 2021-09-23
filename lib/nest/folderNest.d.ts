@@ -12,7 +12,7 @@ export declare class FolderNest extends Nest {
     protected heldJobs: (FileJob | FolderJob)[];
     private _watcher;
     constructor(e: Environment, path?: string, allowCreate?: boolean);
-    private readonly watcher;
+    private get watcher();
     /**
      * Check if the _path for the backing folder is created. If not, optionally create it.
      * @param directory

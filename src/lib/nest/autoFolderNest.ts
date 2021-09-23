@@ -2,7 +2,8 @@ import {FolderNest} from "./folderNest";
 import {Environment} from "../environment/environment";
 
 const   fs = require("fs"),
-        tmp = require("tmp");
+        tmp = require("tmp"),
+        path_mod = require("path");
 
 /**
  * An auto managed folder nest used for temporarily storing _files.
@@ -33,13 +34,13 @@ export class AutoFolderNest extends FolderNest {
                 hierarchyString = cleanDirSegment(hierarchy.toString());
             } else if (hierarchy instanceof Array) {
                 hierarchy.forEach((pi) => {
-                    hierarchyString += "/" + cleanDirSegment(pi);
+                    hierarchyString += path_mod.sep + cleanDirSegment(pi);
                 });
             } else {
                 throw `Path should be a string or array, ${typeof(hierarchy)} found.`;
             }
-            if (hierarchyString.charAt(0) !== "/") {
-                hierarchyString = "/" + hierarchyString;
+            if (hierarchyString.charAt(0) !== path_mod.sep) {
+                hierarchyString = path_mod.sep + hierarchyString;
             }
             return hierarchyString;
         };

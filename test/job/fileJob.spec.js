@@ -1,7 +1,7 @@
 var should = require('chai').should();
 var expect = require('chai').expect;
 var Job = require('./../../lib/job/job');
-var Antfarm = require("./../../lib/antfarm");
+var Antfarm = require("./../../lib/antfarm").default;
 var tmp = require('tmp');
 var fs = require("fs");
 var path = require('path');
@@ -32,6 +32,7 @@ describe('FileJob', function() {
     // Function to add a new job to the watched nest
     var triggerNewJob = function(name, theNest){
         var temp_file_path = theNest.path + path.sep + name;
+
         try {
             fs.writeFileSync(temp_file_path, "Some dummy data.");
         } catch (err) {
@@ -45,8 +46,8 @@ describe('FileJob', function() {
         var tunnel = af.createTunnel("Size tunnel");
         var nest = af.createAutoFolderNest("My folder");
         tunnel.watch(nest);
-
-        tunnel.run(function(job){
+        
+        tunnel.runSync(function(job) {
             expect(job.size).not.to.be.undefined;
             job.size.should.equal("16 B");
             job.sizeBytes.should.equal(16);
@@ -90,6 +91,6 @@ describe('FileJob', function() {
             done();
         });
         triggerNewJob(job_name, hotfolder);
-    }).timeout(2000);
+    }).timeout(15000);
 });
 

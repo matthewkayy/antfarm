@@ -20,12 +20,16 @@ export declare class Step {
      * Step validation error.
      */
     protected _failure: string;
-    failure: string;
-    callback: (job: Job, ui: WebhookInterface, step: Step) => void;
-    name: string;
+    set failure(message: string);
+    get failure(): string;
+    set callback(callback: (job: Job, ui: WebhookInterface, step: Step) => void);
+    get callback(): (job: Job, ui: WebhookInterface, step: Step) => void;
+    get name(): string;
+    set name(name: string);
     /**
      * Set complete and wipe out any failure
      * @param complete
      */
-    complete: boolean;
+    set complete(complete: boolean);
+    get complete(): boolean;
 }

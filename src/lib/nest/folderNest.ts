@@ -2,11 +2,9 @@ import {Environment} from "../environment/environment";
 import { Nest } from "./nest";
 import { FileJob } from "./../job/fileJob";
 import { FolderJob } from "./../job/folderJob";
-import {Job} from "../job/job";
 
 const   fs = require("fs"),
         path_mod = require("path"),
-        tmp = require("tmp"),
         mkdirp = require("mkdirp"),
         _ = require("lodash");
 
@@ -25,7 +23,6 @@ export class FolderNest extends Nest {
         let nest_name = path_mod.basename(path);
         super(e, nest_name);
 
-        // this._watcher = require("node-watch");
         this._watcher = require("chokidar");
 
         this.allowCreate = allowCreate;
@@ -75,7 +72,7 @@ export class FolderNest extends Nest {
         // console.log("vlaiditiy", fl.path.indexOf(path) === -1);
 
         if (path.indexOf(fl.path) === -1) {
-            fl.e.log(3, `Found job that did not exist in this nest. Job: ${path}`, fl);
+            fl.e.log(3, `Found job that did not exist in this nest. Job: "${path}"`, fl);
         } else {
 
             try {
@@ -155,12 +152,14 @@ export class FolderNest extends Nest {
         // };
 
         let handleWatchEvent = (filepath) => {
-            if (fl.path !== filepath) {
+            const normalizedFilePath = filepath.split(path_mod.sep).join(path_mod.posix.sep);
+
+            if (fl.path !== normalizedFilePath) {
                 let job;
                 if (hold === false) {
-                    job = fl.createJob(filepath, true); // Arrives as well
+                    job = fl.createJob(normalizedFilePath, true); // Arrives as well
                 } else {
-                    job = fl.createJob(filepath, false);
+                    job = fl.createJob(normalizedFilePath, false);
                     fl.holdJob(job);
                 }
 
@@ -171,11 +170,15 @@ export class FolderNest extends Nest {
 
         fl.e.log(0, `Watching ${fl.path}`, fl, [fl.tunnel]);
 
-        let chokOpts = {ignored: /[\/\\]\./};
-        // let chokOpts = {ignored: /[\/\\]\./, ignoreInitial: true, depth: 1};
-
-
-        // fl.watcher(fl.path, watch_options, filepath => {
+        let chokOpts = {
+            ignored: /[\/\\]\./,
+            ignoreInitial: true,
+            awaitWriteFinish: {
+                stabilityThreshold: 2000,
+                pollInterval: 100
+            }
+        };
+        
         let watcherInstance = fl.watcher.watch(fl.path, chokOpts);
         watcherInstance
             .on("add", (filepath, event) => { handleWatchEvent(filepath); })

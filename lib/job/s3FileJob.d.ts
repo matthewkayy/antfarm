@@ -8,30 +8,33 @@ export declare class S3FileJob extends FileJob {
     private _eTag;
     constructor(e: Environment, basename: any);
     /**
-     * Get remote bucket location.
-     * @returns {string}
-     */
-    /**
      * Set remote bucket location.
      * @param bucket
      */
-    bucket: string;
+    set bucket(bucket: string);
     /**
-     * Get remote key
+     * Get remote bucket location.
      * @returns {string}
      */
+    get bucket(): string;
     /**
      * Set remote key.
      * @param key
      */
-    key: string;
+    set key(key: string);
     /**
-     * Get remote ETag
+     * Get remote key
      * @returns {string}
      */
+    get key(): string;
     /**
      * Set remote ETag
      * @param eTag
      */
-    eTag: string;
+    set eTag(eTag: string);
+    /**
+     * Get remote ETag
+     * @returns {string}
+     */
+    get eTag(): string;
 }

@@ -5,8 +5,6 @@ import {FieldOptions} from "./field";
 import {Step} from "./step";
 import {InterfaceMetadata} from "./interfaceMetadata";
 import {InterfaceProperty} from "./InterfaceProperty";
-import {FileJob} from "../job/fileJob";
-import {FolderJob} from "../job/folderJob";
 
 const   shortid     = require("shortid"),
         _           = require("lodash"),

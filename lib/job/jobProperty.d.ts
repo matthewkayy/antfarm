@@ -3,8 +3,11 @@ export declare class JobProperty {
     protected _value: any;
     protected _type: string;
     constructor(key: string, value: any);
-    value: any;
+    get value(): any;
+    set value(value: any);
     protected resolveType(): void;
-    key: string;
-    type: string;
+    get key(): string;
+    set key(key: string);
+    get type(): string;
+    set type(type: string);
 }

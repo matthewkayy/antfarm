@@ -2,12 +2,14 @@
   "name": "antfarm",
   "version": "1.2.7",
   "description": "File automation framework for ants.",
-  "main": "index.js",
+  "types": "./lib/antfarm.d.ts",
+  "main": "./lib/antfarm.js",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "test": "tsc -p ./ts && mocha --watch",
+    "build": "tsc",
+    "test": "tsc -p tsconfig.json && mocha --watch",
     "test:auto": "mocha --watch",
     "docs": "typedoc --out docs/ ./src/**/*.ts --mode file --ignoreCompilerErrors"
   },
@@ -24,7 +26,7 @@
   "dependencies": {
     "async": "^2.0.1",
     "aws-sdk": "^2.6.7",
-    "chokidar": "^1.6.1",
+    "chokidar": "^3.5.2",
     "clone": "^2.0.0",
     "cors": "^2.8.1",
     "easy-ftp": "^0.3.22",
@@ -70,6 +72,6 @@
     "tslint": "^3.15.1",
     "tslint-stylish": "^2.1.0-beta",
     "typedoc": "^0.5.0",
-    "typescript": "^2.0.3"
+    "typescript": "^4.4.3"
   }
 }

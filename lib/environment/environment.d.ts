@@ -17,24 +17,25 @@ export declare class Environment {
     protected hookInterfaceRoutes: any[];
     constructor(options: AntfarmOptions);
     /**
-     * Get the Antfarm options.
-     * @returns {AntfarmOptions}
-     */
-    /**
      * Sets the options and creates other environmental objects if necessary.
      * @param options
      */
-    options: AntfarmOptions;
+    set options(options: AntfarmOptions);
+    /**
+     * Get the Antfarm options.
+     * @returns {AntfarmOptions}
+     */
+    get options(): AntfarmOptions;
     /**
      * Creates an Emailer object to send emails.
      */
     protected createEmailer(): void;
-    readonly emailer: Emailer;
+    get emailer(): Emailer;
     /**
      * Return the auto managed folder directory, if set.
      * @returns {string}
      */
-    readonly autoManagedFolderDirectory: string;
+    get autoManagedFolderDirectory(): string;
     /**
      * Creates the server.
      */
@@ -43,7 +44,7 @@ export declare class Environment {
      * Get the server instance.
      * @returns {Server}
      */
-    readonly server: Server;
+    get server(): Server;
     /**
      * Adds a webhook to the webhook server.
      * @param nest

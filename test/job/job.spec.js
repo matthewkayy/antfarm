@@ -1,7 +1,7 @@
 var should = require('chai').should();
 var expect = require('chai').expect;
 var Job = require('./../../lib/job/job');
-var Antfarm = require("./../../lib/antfarm");
+var Antfarm = require("./../../lib/antfarm").default;
 var tmp = require('tmp');
 var fs = require("fs");
 var path = require('path');
@@ -298,7 +298,7 @@ describe('Job', function() {
             unpackTunnel.watch(packHolderNest);
 
             var job_name = "MyJobFile_009.pdf";
-            tunnel.run(function(job){
+            tunnel.runSync(function(job){
                 job.setPropertyValue("prop1", prop1);
                 job.setPropertyValue("prop2", prop2);
                 job.setPropertyValue("prop3", prop3);
@@ -307,9 +307,10 @@ describe('Job', function() {
                 });
             });
 
-            unpackTunnel.run(function(packedJob, n){
+            unpackTunnel.runSync(function(packedJob, n){
                 expect(packedJob.name).not.to.be.undefined;
                 packedJob.name.should.equal(job_name+".antpack.zip");
+                console.log(packedJob.name)
                 packedJob.unpack(function(origJob){
                     expect(origJob).not.to.be.undefined;
                     expect(origJob.name).not.to.be.undefined;

@@ -10,10 +10,11 @@ export declare abstract class Nest {
     protected _tunnel: Tunnel;
     protected e: Environment;
     constructor(e: Environment, name: string);
-    readonly id: string;
+    get id(): string;
     toString(): string;
-    name: string;
-    readonly tunnel: Tunnel;
+    get name(): string;
+    set name(name: string);
+    get tunnel(): Tunnel;
     register(tunnel: Tunnel): void;
     arrive(job: Job): void;
     take(job: Job, callback: any): void;

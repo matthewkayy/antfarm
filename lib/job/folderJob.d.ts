@@ -23,26 +23,27 @@ export declare class FolderJob extends Job {
      * Gets the job _name.
      * @returns {string}
      */
-    readonly name: string;
+    get name(): string;
     /**
      * Get the _basename.
      * @returns {string}
      */
-    readonly basename: string;
+    get basename(): string;
     /**
      * Get the directory _name.
      * @returns {string}
      */
-    readonly dirname: string;
+    get dirname(): string;
     /**
      * Get the _path.
      * @returns {string}
      */
+    get path(): string;
     /**
      * Set a new _path.
      * @param path
      */
-    path: string;
+    set path(path: string);
     /**
      * Add a file object to the job.
      * @param file
@@ -58,7 +59,7 @@ export declare class FolderJob extends Job {
      * Get all _files associated with the job.
      * @returns {File[]}
      */
-    readonly files: File[];
+    get files(): File[];
     /**
      * Get the number of _files in this folder.
      * @returns {number}
@@ -68,7 +69,7 @@ export declare class FolderJob extends Job {
      * Get the extension.
      * @returns {null}
      */
-    readonly extension: any;
+    get extension(): any;
     /**
      * Check if job is a folder.
      * @returns {boolean}
